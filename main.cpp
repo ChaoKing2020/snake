@@ -1,7 +1,7 @@
 #include <thread>
-#include "headers/snake.h"
-#include "headers/controller.h"
-#include "headers/win.h"
+#include "header/snake.h"
+#include "header/controller.h"
+#include "header/win.h"
 
 
 int main()

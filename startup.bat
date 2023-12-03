@@ -1,15 +1,16 @@
 @echo off
-@REM chcp 65001
+chcp 65001
+title snake
 
 cd %~dp0
 
 IF "%1"=="pkg" (
 	g++ src/*.cpp -shared -fPIC -osnake.dll -leasyx -lole32 -lgdi32
-    g++ -L. -lsnake main.cpp -omain && main
+    g++ -L. -lsnake main.cpp -osnake && snake
 )
 
 IF "%1"=="run" (
-	g++ src/*.cpp main.cpp -leasyx -lole32 -lgdi32 -omain && main
+	g++ src/*.cpp main.cpp -leasyx -lole32 -lgdi32 -osnake && snake
 )
 
 IF "%1"=="git" (

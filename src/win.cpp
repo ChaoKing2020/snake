@@ -1,6 +1,6 @@
 #include <chrono>
-#include <graphics.h>
 #include <iostream>
+#include <graphics.h>
 
 #include "../header/win.h"
 #include "../header/glob.h"
@@ -61,10 +61,4 @@ void draw_word()
 
     std::string s2 = "speed: " + std::to_string(speed);
     outtextxy(w - 80 , 20, (LPTSTR)s2.c_str());
-
-    std::string s3 = "F1: sp up";
-    outtextxy(w - 80 , 40, (LPTSTR)s3.c_str());
-
-    std::string s4 = "F2: sp down";
-    outtextxy(w - 80 , 60, (LPTSTR)s4.c_str());
 }
