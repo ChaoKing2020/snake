@@ -2,6 +2,7 @@
 #include <iostream>
 #include <graphics.h>
 
+#include "../header/controller.h"
 #include "../header/glob.h"
 
 void controller()
@@ -12,7 +13,6 @@ void controller()
         while(peekmessage(&msg, EM_KEY)) {
             if(msg.message == WM_KEYDOWN) {
                 auto key = msg.vkcode;
-                auto hd = &snake.sn[0];
                 if(dir == 'U' && key == VK_DOWN)  continue;
                 if(dir == 'D' && key == VK_UP)    continue;
                 if(dir == 'L' && key == VK_RIGHT) continue;

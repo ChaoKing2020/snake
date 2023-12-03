@@ -4,29 +4,12 @@
 #include <graphics.h>
 
 #include "../header/snake.h"
-#include "../header/win.h"
 #include "../header/glob.h"
-
-void product_food()
-{
-    while (true)
-    {
-        food.x = 10 + (rand() % 25) * 20;
-        food.y = 10 + (rand() % 25) * 20;
-        for(auto &e: snake.sn) {
-            if(e.x == food.x && e.y == food.y) continue;
-        }
-        break;
-    }
-    std::cout << "the food position: " << food.x << " " << food.y << "\n";
-}
 
 void init()
 {
     snake.sn = {Node(110, 70), Node(90, 70), Node(70, 70)};
     dir = 'R';
-
-    product_food();
 
     grade = 0;
 
@@ -36,15 +19,29 @@ void init()
     is_running = false;
     speed = 10;
 
-    srand(time(0));
+    product_food();
+}
+
+void product_food()
+{
+    while (true)
+    {
+        food.x = 10 + (rand() % 25) * 20;
+        food.y = 10 + (rand() % 25) * 20;
+        bool flag = true;
+        for(auto &e: snake.sn) {
+            if(e == food) flag = false;
+        }
+        if(flag) break;
+    }
+    std::cout << "the food position: " << food.x << " " << food.y << "\n";
 }
 
 void eat_food()
 {
-    auto *hd = &snake.sn[0];
-    auto *fd = &food;
-    if(sqrt(pow(hd->x - fd->x, 2) + pow(hd->y - fd->y, 2)) < 10) {
-        snake.sn.insert(snake.sn.begin(), Node(fd->x, fd->y));
+    auto hd = snake.sn[0];
+    if(hd == food) {
+        snake.sn.insert(snake.sn.begin(), Node(food.x, food.y));
         product_food();
         grade += 25;
     }
@@ -53,8 +50,7 @@ void eat_food()
 void move()
 {
     for(int i = snake.sn.size() - 1; i > 0; i--) {
-        snake.sn[i].x = snake.sn[i - 1].x;
-        snake.sn[i].y = snake.sn[i - 1].y;
+        snake.sn[i] = snake.sn[i - 1];
     }
     auto hd = &snake.sn[0];
     switch(dir) {
