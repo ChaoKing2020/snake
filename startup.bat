@@ -15,7 +15,7 @@ IF "%1"=="run" (
 IF "%1"=="git" (
     git add .
     git commit -m '#'
-    git push
+    git push origin master
 )
 
 IF "%1"=="clean" (
