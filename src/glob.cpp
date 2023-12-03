@@ -1,4 +1,4 @@
-#include "../headers/glob.h"
+#include "../header/glob.h"
 
 Snake snake;      // snake
 Food food;        // food

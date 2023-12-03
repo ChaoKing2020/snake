@@ -2,7 +2,7 @@
 #include <iostream>
 #include <graphics.h>
 
-#include "../headers/glob.h"
+#include "../header/glob.h"
 
 void controller()
 {

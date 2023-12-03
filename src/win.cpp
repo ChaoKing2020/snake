@@ -2,8 +2,8 @@
 #include <graphics.h>
 #include <iostream>
 
-#include "../headers/win.h"
-#include "../headers/glob.h"
+#include "../header/win.h"
+#include "../header/glob.h"
 
 void draw()
 {

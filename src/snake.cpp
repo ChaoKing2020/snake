@@ -3,9 +3,9 @@
 #include <iostream>
 #include <graphics.h>
 
-#include "../headers/snake.h"
-#include "../headers/win.h"
-#include "../headers/glob.h"
+#include "../header/snake.h"
+#include "../header/win.h"
+#include "../header/glob.h"
 
 void product_food()
 {
