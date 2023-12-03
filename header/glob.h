@@ -5,6 +5,7 @@
 struct Node
 {
     int x, y;
+    Node(){}
     Node(int xx, int yy):x(xx), y(yy){}
     const Node operator=(const Node& p) {
         x = p.x;
