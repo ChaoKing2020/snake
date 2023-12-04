@@ -2,3 +2,4 @@ easyx/
 .vscode/
 *.exe
 .idea
+*.dll
