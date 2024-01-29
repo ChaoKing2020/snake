@@ -4,3 +4,4 @@ easyx/
 .idea
 *.dll
 lib/
+build/
