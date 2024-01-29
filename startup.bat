@@ -1,6 +1,4 @@
 @echo off
-chcp 65001
-title snake
 
 cd %~dp0
 
@@ -10,7 +8,7 @@ IF "%1"=="pkg" (
 )
 
 IF "%1"=="run" (
-	g++ src/*.cpp main.cpp -leasyx -lole32 -lgdi32 -osnake && snake
+	g++ src/*.cpp -leasyx -lole32 -lgdi32 -o build/snake
 )
 
 IF "%1"=="git" (

@@ -1,4 +1,3 @@
-#include <chrono>
 #include <iostream>
 #include <graphics.h>
 
@@ -7,20 +6,14 @@
 
 void draw()
 {
-    initgraph(w, h);
-    BeginBatchDraw();
-    while (true)
-    {
-        cleardevice();
+    cleardevice();
 
-        draw_map();
-        draw_snake();
-        draw_food();
-        draw_word();
-        
-        FlushBatchDraw();
-        Sleep(10);
-    }
+    draw_map();
+    draw_snake();
+    draw_food();
+    draw_word();
+
+    FlushBatchDraw();
 }
 
 void draw_snake()

@@ -3,11 +3,19 @@
 #include <iostream>
 #include <graphics.h>
 
-#include "header/snake.h"
-#include "header/win.h"
-#include "header/glob.h"
+#include "../header/snake.h"
+#include "../header/win.h"
+#include "../header/glob.h"
 
 using namespace std::chrono;
+
+Snake snake;      // snake
+Node food;        // food
+int grade;        // total grade
+bool is_running;  // whetehr start game or not
+int w, h;         // the width and hight of game window
+int speed;        // frame rate
+char dir;         // the way of snake header
 
 void init()
 {
@@ -66,8 +74,9 @@ void recv_msg()
 int main()
 {
     init();
-    std::thread th1(draw);
-    th1.detach();
+    initgraph(w, h);
+    BeginBatchDraw();
+    draw();
     
     srand(time(0));
     auto t1 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
@@ -75,6 +84,7 @@ int main()
     {
         recv_msg();
         while (is_running) {
+            draw();
             controller();
             auto t2 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
             if(t2 - t1 > 1000 / speed) {
