@@ -3,9 +3,9 @@
 #include <iostream>
 #include <graphics.h>
 
-#include "../header/snake.h"
-#include "../header/win.h"
-#include "../header/glob.h"
+#include <snake.h>
+#include <win.h>
+#include <glob.h>
 
 using namespace std::chrono;
 

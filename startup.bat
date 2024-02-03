@@ -8,7 +8,7 @@ IF "%1"=="pkg" (
 )
 
 IF "%1"=="run" (
-	g++ src/*.cpp -Llib -leasyx -lole32 -lgdi32 -o build/snake
+	g++ src/*.cpp -Iheader -Llib -leasyx -lole32 -lgdi32 -o build/snake
 )
 
 IF "%1"=="git" (

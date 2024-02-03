@@ -2,8 +2,8 @@
 #include <iostream>
 #include <graphics.h>
 
-#include "../header/snake.h"
-#include "../header/glob.h"
+#include <snake.h>
+#include <glob.h>
 
 
 void product_food()
