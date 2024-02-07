@@ -144,7 +144,7 @@ void setlinestyle(const LINESTYLE* pstyle);					// Set line style
 void setlinestyle(int style, int thickness = 1, const DWORD *puserstyle = NULL, DWORD userstylecount = 0);	// Set line style
 void getfillstyle(FILLSTYLE* pstyle);						// Get fill style
 void setfillstyle(const FILLSTYLE* pstyle);					// Set fill style
-void setfillstyle(int style, long hatch = NULL, IMAGE* ppattern = NULL);		// Set fill style
+void setfillstyle(int style, long hatch, IMAGE* ppattern = NULL);		// Set fill style
 void setfillstyle(BYTE* ppattern8x8);						// Set fill style
 
 void setorigin(int x, int y);								// Set coordinate origin

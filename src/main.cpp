@@ -1,8 +1,7 @@
-#include <thread>
 #include <chrono>
 #include <iostream>
-#include <graphics.h>
 
+#include <graphics.h>
 #include <snake.h>
 #include <win.h>
 #include <glob.h>
