@@ -5,6 +5,4 @@ easyx/
 *.dll
 lib/
 build/
-*.o
-*.rc
-*.ico
+
