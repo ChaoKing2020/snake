@@ -6,31 +6,33 @@
 
 void draw()
 {
-    cleardevice();
-
-    draw_map();
-    draw_snake();
-    draw_food();
-    draw_word();
-
-    FlushBatchDraw();
+    while (true)
+    {
+        cleardevice();
+        draw_map();
+        draw_snake();
+        draw_food();
+        draw_word();
+        FlushBatchDraw();
+        Sleep(10);
+    }
 }
 
 void draw_snake()
 {
     setfillcolor(GREEN);
     for(int i = 1; i < snake.sn.size(); i++) {
-        solidcircle(snake.sn[i].x, snake.sn[i].y, 10);
+        solidcircle(10 + snake.sn[i].x * 20, 10 + snake.sn[i].y * 20, 10);
     }
     setfillcolor(BLUE);
-    solidcircle(snake.sn[0].x, snake.sn[0].y, 10);
+    solidcircle(10 + snake.sn[0].x * 20, 10 + snake.sn[0].y * 20, 10);
     
 }
 
 void draw_food()
 {
     setfillcolor(YELLOW);
-    solidcircle(food.x, food.y, 10);
+    solidcircle(10 + food.x * 20, 10 + food.y * 20, 10);
 }
 
 void draw_map()

@@ -10,7 +10,8 @@ IF "%1"=="pkg" (
 )
 
 IF "%1"=="run" (
-	g++ src/*.cpp -Iheader -Llib -leasyx -lole32 -lgdi32 -o build/snake
+	g++ src/*.cpp -Iheader -Llib -leasyx -lole32 -lgdi32 -o build/snake && cd build && snake
+    cd ..
 )
 
 IF "%1"=="static" (

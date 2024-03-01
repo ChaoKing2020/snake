@@ -10,8 +10,8 @@ void product_food()
 {
     while (true)
     {
-        food.x = 10 + (rand() % 25) * 20;
-        food.y = 10 + (rand() % 25) * 20;
+        food.x = rand() % 25;
+        food.y = rand() % 25;
         bool flag = true;
         for(auto &e: snake.sn) {
             if(e == food) flag = false;
@@ -38,13 +38,13 @@ void move()
     }
     auto hd = &snake.sn[0];
     switch(dir) {
-        case 'U': hd->y -= 20; break;
-        case 'D': hd->y += 20; break;
-        case 'L': hd->x -= 20; break;
-        case 'R': hd->x += 20; break;
+        case 'U': hd->y -= speed; break;
+        case 'D': hd->y += speed; break;
+        case 'L': hd->x -= speed; break;
+        case 'R': hd->x += speed; break;
     }
-    if(hd->x < 0) hd->x = w - 10;
-    if(hd->x > w) hd->x = 0 + 10;
-    if(hd->y < 0) hd->y = h - 10;
-    if(hd->y > h) hd->y = 0 + 10;
+    if(hd->x < 0) hd->x = 24;
+    if(hd->x > 24) hd->x = 0;
+    if(hd->y < 0) hd->y = 24;
+    if(hd->y > 24) hd->y = 0;
 }
