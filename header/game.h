@@ -1,6 +1,8 @@
 #pragma once
+
 #include <snake.h>
 #include <food.h>
+
 class Game
 {
 public:
@@ -12,6 +14,10 @@ public:
 
     void init();
     void product_food();
+    void run();
+    void controller();
+    void draw();
 
     Game();
+
 };
