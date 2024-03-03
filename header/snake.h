@@ -1,6 +1,18 @@
 #pragma once
 
-void init();
-void product_food();
-void move();
-void eat_food();
+#include <node.h>
+#include <food.h>
+#include <vector>
+
+class Snake: public Node
+{
+public:
+    char dir;
+    char speed;
+    std::vector<Node> sn;
+    
+    void move();
+    bool eat_food(Food& food);
+
+    Snake();
+};

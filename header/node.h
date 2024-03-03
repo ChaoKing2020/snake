@@ -1,9 +1,7 @@
 #pragma once
-
-#include <vector>
-
-struct Node
+class Node
 {
+public:
     int x, y;
     Node(){}
     Node(int xx, int yy):x(xx), y(yy){}
@@ -16,15 +14,3 @@ struct Node
         return x == p.x && y == p.y;
     }
 };
-struct Snake
-{
-    std::vector<Node> sn;
-};
-
-extern Snake snake;
-extern Node food;
-extern int grade;
-extern bool is_running;
-extern int w, h;
-extern int speed;
-extern char dir;
