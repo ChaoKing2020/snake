@@ -1,8 +1,5 @@
-easyx/
 .vscode/
-*.exe
-.idea
-*.dll
-lib/
+.idea/
 build/
-
+*.dll
+*.exe
