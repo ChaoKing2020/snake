@@ -1,6 +1,10 @@
 #include <snake.h>
 
-Snake::Snake() {}
+Snake::Snake() {
+    this->speed = 1;
+    this->sn = {Node(7, 3), Node(6, 3), Node(5, 3)};
+    this->dir = 'R';
+}
 
 bool Snake::eat_food(Food& food) {
     auto hd = this->sn[0];
@@ -18,10 +22,10 @@ void Snake::move() {
     }
     auto hd = &this->sn[0];
     switch(dir) {
-        case 'U': hd->y -= speed; break;
-        case 'D': hd->y += speed; break;
-        case 'L': hd->x -= speed; break;
-        case 'R': hd->x += speed; break;
+        case 'U': hd->y -= this->speed; break;
+        case 'D': hd->y += this->speed; break;
+        case 'L': hd->x -= this->speed; break;
+        case 'R': hd->x += this->speed; break;
     }
     if(hd->x < 0) hd->x = 24;
     if(hd->x > 24) hd->x = 0;

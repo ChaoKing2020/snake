@@ -7,10 +7,11 @@ class Game
 {
 public:
     int w, h;
-    Snake* snake;
+    Snake snake;
     Food food;
     int grade;
     bool is_running;
+    int frame;
 
     void init();
     void product_food();

@@ -14,12 +14,10 @@ void Game::init() {
     this->grade = 0;
 
     this->is_running = false;
+    this->frame = 60;
 
-    this->food = Food(20, 20);
-    this->snake = new Snake();
-    this->snake->sn = {Node(7, 3), Node(6, 3), Node(5, 3)};
-    this->snake->dir = 'R';
-    this->snake->speed = 1;
+    this->food = Food();
+    this->snake = Snake();
 }
 
 void Game::product_food() {
@@ -28,7 +26,7 @@ void Game::product_food() {
         this->food.x = rand() % 25;
         this->food.y = rand() % 25;
         bool flag = true;
-        for(auto &e: this->snake->sn) {
+        for(auto &e: this->snake.sn) {
             if(e == this->food) flag = false;
         }
         if(flag) break;
@@ -38,8 +36,8 @@ void Game::product_food() {
 
 void Game::run()
 {
-    this->snake->move();
-    auto flag = this->snake->eat_food(this->food);
+    this->snake.move();
+    auto flag = this->snake.eat_food(this->food);
     if(flag) {
         this->product_food();
         this->grade += 25;
@@ -54,25 +52,25 @@ void Game::controller()
         while(peekmessage(&msg, EM_KEY)) {
             if(msg.message == WM_KEYDOWN) {
                 auto key = msg.vkcode;
-                auto dir = this->snake->dir;
-                auto speed = this->snake->speed;
+                auto dir = this->snake.dir;
+                auto speed = this->snake.speed;
                 if(dir == 'U' && key == VK_DOWN)  continue;
                 if(dir == 'D' && key == VK_UP)    continue;
                 if(dir == 'L' && key == VK_RIGHT) continue;
                 if(dir == 'R' && key == VK_LEFT)  continue;
                 switch(key) {
-                    case VK_UP:    this->snake->dir ='U'; break;
-                    case VK_DOWN:  this->snake->dir ='D'; break;
-                    case VK_LEFT:  this->snake->dir ='L'; break;
-                    case VK_RIGHT: this->snake->dir ='R'; break;
-                    case VK_F1:    if(speed < 10)  this->snake->speed += 1; std::cout << "speed up\n"; break;
-                    case VK_F2:    if(speed > 1)   this->snake->speed -= 1; std::cout << "speed dw\n"; break;
+                    case VK_UP:    this->snake.dir ='U'; break;
+                    case VK_DOWN:  this->snake.dir ='D'; break;
+                    case VK_LEFT:  this->snake.dir ='L'; break;
+                    case VK_RIGHT: this->snake.dir ='R'; break;
+                    case VK_F1:    if(this->frame < 100) this->frame += 10; std::cout << "speed up\n"; break;
+                    case VK_F2:    if(this->frame > 11)  this->frame -= 10; std::cout << "speed dw\n"; break;
                     case VK_SPACE: this->is_running = !this->is_running; std::cout << "pause\n"; break;
                     case VK_ESCAPE: exit(0);
                 }
             }
         }
-        Sleep(10);
+        Sleep(1);
     }
 }
 
@@ -91,11 +89,11 @@ void Game::draw()
         }
 
         setfillcolor(GREEN);
-        for(int i = 1; i < this->snake->sn.size(); i++) {
-            solidcircle(10 + this->snake->sn[i].x * 20, 10 + this->snake->sn[i].y * 20, 10);
+        for(int i = 1; i < this->snake.sn.size(); i++) {
+            solidcircle(10 + this->snake.sn[i].x * 20, 10 + this->snake.sn[i].y * 20, 10);
         }
         setfillcolor(BLUE);
-        solidcircle(10 + this->snake->sn[0].x * 20, 10 + this->snake->sn[0].y * 20, 10);
+        solidcircle(10 + this->snake.sn[0].x * 20, 10 + this->snake.sn[0].y * 20, 10);
 
         setfillcolor(YELLOW);
         solidcircle(10 + this->food.x * 20, 10 + this->food.y * 20, 10);
@@ -106,10 +104,10 @@ void Game::draw()
         std::string s = "grade: " + std::to_string(this->grade);
         outtextxy(this->w - 80, 0, (LPTSTR)s.c_str());
 
-        std::string s2 = "speed: " + std::to_string(this->snake->speed);
+        std::string s2 = "speed: " + std::to_string(this->frame);
         outtextxy(this->w - 80 , 20, (LPTSTR)s2.c_str());
 
         FlushBatchDraw();
-        Sleep(10);
+        Sleep(1);
     }
 }

@@ -12,7 +12,7 @@ int main()
     initgraph(game->w, game->h);
     BeginBatchDraw();
     
-    auto t1 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+    // auto t1 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
     std::thread th([game](){game->controller();});
     std::thread th2([game](){game->draw();});
     th.detach();
@@ -21,13 +21,14 @@ int main()
     while (true)
     {
         while (game->is_running) {
-            auto t2 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-            if(t2 - t1 > 1000 / 10) {
-                game->run();
-                t1 = t2;
-            }
+            // auto t2 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+            // if(t2 - t1 > 1000 / 10) {
+            //     game->run();
+            //     t1 = t2;
+            // }
+            game->run();
+            Sleep(1000 / game->frame);
         }
-        Sleep(10);
     }
     return 0;
 }
