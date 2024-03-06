@@ -11,7 +11,7 @@ public:
     char speed;
     std::vector<Node> sn;
     
-    void move();
+    void move(int cnt);
     bool eat_food(Food& food);
 
     Snake();

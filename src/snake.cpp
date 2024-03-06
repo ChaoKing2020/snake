@@ -1,4 +1,5 @@
 #include <snake.h>
+#include <game.h>
 
 Snake::Snake() {
     this->speed = 1;
@@ -16,19 +17,28 @@ bool Snake::eat_food(Food& food) {
 }
 
 
-void Snake::move() {
+void Snake::move(int cnt) {
     for(int i = this->sn.size() - 1; i > 0; i--) {
         this->sn[i] = this->sn[i - 1];
     }
     auto hd = &this->sn[0];
     switch(dir) {
-        case 'U': hd->y -= this->speed; break;
-        case 'D': hd->y += this->speed; break;
-        case 'L': hd->x -= this->speed; break;
-        case 'R': hd->x += this->speed; break;
+        case 'U': 
+            hd->y -= this->speed; 
+            break;
+        case 'D': 
+            hd->y += this->speed;
+            break;
+        case 'L': 
+            hd->x -= this->speed;
+            break;
+        case 'R':
+            hd->x += this->speed;
+            break;
     }
-    if(hd->x < 0) hd->x = 24;
-    if(hd->x > 24) hd->x = 0;
-    if(hd->y < 0) hd->y = 24;
-    if(hd->y > 24) hd->y = 0;
+    cnt -= 1;
+    if(hd->x < 0) hd->x = cnt;
+    if(hd->x > cnt) hd->x = 0;
+    if(hd->y < 0) hd->y = cnt;
+    if(hd->y > cnt) hd->y = 0;
 }

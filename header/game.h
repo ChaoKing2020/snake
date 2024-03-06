@@ -12,6 +12,8 @@ public:
     int grade;
     bool is_running;
     int frame;
+    int sz;
+    int cnt;
 
     void init();
     void product_food();
