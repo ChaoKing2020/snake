@@ -13,9 +13,9 @@ int main()
     BeginBatchDraw();
     
     // auto t1 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-    std::thread th([game](){game->controller();});
+    std::thread th1([game](){game->controller();});
     std::thread th2([game](){game->draw();});
-    th.detach();
+    th1.detach();
     th2.detach();
 
     while (true)
