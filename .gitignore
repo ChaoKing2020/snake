@@ -4,5 +4,3 @@ build/
 *.dll
 *.exe
 lib/
-*.a
-/lib
