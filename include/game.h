@@ -17,11 +17,9 @@ public:
     int frame;
     int sz;
     int cnt;
-
     IMAGE body, left, right, up, down, img_food;
-    // std::vector<std::string> img_urls;
-    // std::vector<IMAGE> imgs;
 
+    Game();
     void init();
     void produce_food();
     void run();
@@ -29,7 +27,4 @@ public:
     void draw();
     void play_bg_music();
     void load_image();
-
-    Game();
-
 };

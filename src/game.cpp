@@ -9,7 +9,7 @@ void Game::play_bg_music()
 {
     // 第一个参数的格式为 "open 文件路径 alias 别名"
     mciSendString(_T("open static/snake/music.mp3 alias bg_music"), NULL, 0, NULL);
-    mciSendString(_T("play bg_music"), NULL, 0, NULL);
+    mciSendString(_T("play bg_music repeat"), NULL, 0, NULL);
 }
 
 // 加载图片
@@ -121,7 +121,11 @@ void Game::controller()
                         break;
                     case VK_SPACE: 
                         this->is_running = !this->is_running;
-                        std::cout << "pause\n";
+                        if(!this->is_running) {
+                            std::cout << "pause\n";
+                        } else{
+                            std::cout << "begin\n";
+                        }
                         break;
                     case VK_ESCAPE:
                         exit(0);
