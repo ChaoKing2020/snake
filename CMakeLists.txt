@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.27)
 
 project(chess)
 
-include_directories(${PROJECT_SOURCE_DIR}/header)
-include_directories(${PROJECT_SOURCE_DIR}/header/easyx)
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include/easyx)
 
 file(GLOB SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
