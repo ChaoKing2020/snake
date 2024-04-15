@@ -2,9 +2,10 @@
 #include <graphics.h>
 #include <iostream>
 #include <chrono>
+#include <mmsystem.h>
 
 Game::Game() {
-    srand(time(0));
+    
 }
 
 void Game::init() {
@@ -17,10 +18,15 @@ void Game::init() {
     this->grade = 0;
 
     this->is_running = false;
-    this->frame = 30;
+    this->frame = 10;
 
     this->snake = Snake();
     this->product_food();
+
+    srand(time(0));
+    // 第一个参数的格式为 "open 文件路径 alias 别名"
+    mciSendString(_T("open static/snake/music.mp3 alias bg_music"), NULL, 0, NULL);
+    mciSendString(_T("play bg_music"), NULL, 0, NULL);
 }
 
 void Game::product_food() {
@@ -47,6 +53,7 @@ void Game::run()
     if(flag) {
         this->product_food();
         this->grade += 25;
+        
     }
 }
 

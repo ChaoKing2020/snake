@@ -11,4 +11,4 @@ file(COPY ${CMAKE_SOURCE_DIR}/static DESTINATION ${CMAKE_BINARY_DIR})
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 add_executable(app ${SRC})
-target_link_libraries(app easyx ole32 gdi32)
+target_link_libraries(app easyx ole32 gdi32 winmm)

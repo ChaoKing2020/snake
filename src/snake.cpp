@@ -1,5 +1,8 @@
 #include <snake.h>
 #include <game.h>
+#include <windows.h>
+#include <mmsystem.h>
+#include <graphics.h>
 
 Snake::Snake() {
     this->speed = 1;
@@ -10,6 +13,9 @@ Snake::Snake() {
 bool Snake::eat_food(Food& food) {
     auto hd = this->sn[0];
     if(hd == food) {
+        mciSendString(_T("close food_music"), NULL, 0, NULL); // 关闭音乐
+        mciSendString(_T("open static/snake/music-food.mp3 alias food_music"), NULL, 0, NULL);
+        mciSendString(_T("play food_music"), NULL, 0, NULL);
         this->sn.insert(this->sn.begin(), Node(food.x, food.y));
         return true;
     }
