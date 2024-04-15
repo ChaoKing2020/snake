@@ -100,7 +100,7 @@ void Game::controller()
                 }
             }
         }
-        Sleep(1);
+        Sleep(30);
     }
 }
 
@@ -122,15 +122,44 @@ void Game::draw()
             }
         }
 
-        setfillcolor(GREEN);
+        IMAGE body, left, right, up, down, food;
+        loadimage(&body, _T("static/snake/body.png"));
+        loadimage(&left, _T("static/snake/left.png"));
+        loadimage(&right, _T("static/snake/right.png"));
+        loadimage(&up, _T("static/snake/up.png"));
+        loadimage(&down, _T("static/snake/down.png"));
+        loadimage(&food, _T("static/snake/food.png"));
+        // setfillcolor(GREEN);
         for(int i = 1; i < this->snake.sn.size(); i++) {
-            solidcircle(this->sz / 2 + this->snake.sn[i].x * this->sz, this->sz / 2 + this->snake.sn[i].y * this->sz, this->sz / 2);
+            int x = this->snake.sn[i].x * this->sz;
+            int y = this->snake.sn[i].y * this->sz;
+            putimage(x, y, &body);
         }
-        setfillcolor(BLUE);
-        solidcircle(this->sz / 2 + this->snake.sn[0].x * this->sz, this->sz / 2 + this->snake.sn[0].y * this->sz, this->sz / 2);
 
-        setfillcolor(YELLOW);
-        solidcircle(this->sz / 2 + this->food.x * this->sz, this->sz / 2 + this->food.y * this->sz, this->sz / 2);
+        int hd_x = this->snake.sn[0].x * this->sz;
+        int hd_y = this->snake.sn[0].y * this->sz;
+        char dir = this->snake.dir;
+        switch (dir)
+        {
+        case 'U':
+            putimage(hd_x, hd_y, &up);
+            break;
+        case 'D':
+            putimage(hd_x, hd_y, &down);
+            break;
+        case 'L':
+            putimage(hd_x, hd_y, &left);
+            break;
+        case 'R':
+            putimage(hd_x, hd_y, &right);
+            break;
+        default:
+            break;
+        }
+
+        int fd_x = this->food.x * this->sz;
+        int fd_y = this->food.y * this->sz;
+        putimage(fd_x, fd_y, &food);
 
         setbkmode(TRANSPARENT);
         settextstyle(20, 0, _T("times new roman"));
