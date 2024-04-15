@@ -1,6 +1,4 @@
-#include <cassert>
 #include <thread>
-#include <graphics.h>
 #include <game.h>
 
 int main()

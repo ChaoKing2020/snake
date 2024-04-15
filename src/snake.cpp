@@ -1,8 +1,4 @@
 #include <snake.h>
-#include <game.h>
-#include <windows.h>
-#include <mmsystem.h>
-#include <graphics.h>
 
 Snake::Snake() {
     this->speed = 1;

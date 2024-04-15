@@ -3,6 +3,7 @@
 #include <node.h>
 #include <food.h>
 #include <vector>
+#include <graphics.h>
 
 class Snake: public Node
 {
