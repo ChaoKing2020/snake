@@ -1,5 +1,6 @@
 #include <game.h>
 
+// 播放背景音乐
 void play_bg_music()
 {
     // 第一个参数的格式为 "open 文件路径 alias 别名"

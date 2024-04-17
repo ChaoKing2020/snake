@@ -20,7 +20,6 @@ public:
     IMAGE body, left, right, up, down, img_food, bg;
     std::vector<std::string> food_urls;
     std::string body_str, left_str, right_str, up_str, down_str, bg_str;
-    int food_idx;
 
     Game();
     void produce_food();

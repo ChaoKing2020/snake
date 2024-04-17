@@ -17,7 +17,6 @@ Game::Game() {
     //初始化贪吃蛇
     this->snake = Snake();
 
-    this->food_idx = 0;
     std::string base = "static/snake/";
     this->food_urls = {base + "food/food1.jpg", 
                        base + "food/food2.jpg",
@@ -40,14 +39,6 @@ Game::Game() {
     srand(time(0));
 }
 
-// 播放背景音乐
-// void Game::play_bg_music()
-// {
-//     // 第一个参数的格式为 "open 文件路径 alias 别名"
-//     mciSendString(_T("open static/snake/music.mp3 alias bg_music"), NULL, 0, NULL);
-//     mciSendString(_T("play bg_music repeat"), NULL, 0, NULL);
-// }
-
 // 加载图片
 void Game::load_image()
 {
@@ -58,25 +49,28 @@ void Game::load_image()
     loadimage(&this->up, (LPCTSTR)this->up_str.c_str());
     loadimage(&this->down, (LPCTSTR)this->down_str.c_str());
 
-    loadimage(&this->img_food, (LPCTSTR)this->food_urls[this->food_idx].c_str());
+    loadimage(&this->img_food, (LPCTSTR)this->food_urls[0].c_str());
     
     loadimage(&this->bg, (LPCTSTR)this->bg_str.c_str());
 }
 
 // 生成食物
 void Game::produce_food() {
+    // 重新设置食物样式
+    loadimage(&this->img_food, (LPCTSTR)this->food_urls[rand() % 4].c_str());
+    // 重新生成食物位置
     while (true)
     {
         this->food.x = rand() % this->cnt;
         this->food.y = rand() % this->cnt;
-        bool flag = true;
+        bool is_ok = true;
         for(auto &e: this->snake.sn) {
-            if(e == this->food) {
-                flag = false;
+            if(this->food == e) {
+                is_ok = false;
                 break;
             }
         }
-        if(flag) break;
+        if(is_ok) break;
     }
     std::cout << "The food position: " << this->food.x << " " << this->food.y << "\n";
 }
@@ -87,9 +81,6 @@ void Game::run()
     this->snake.move(this->cnt);
     auto flag = this->snake.eat_food(this->food);
     if(flag) {
-        this->food_idx = rand() % 4;
-        std::cout << this->food_idx << std::endl;
-        loadimage(&this->img_food, (LPCTSTR)this->food_urls[this->food_idx].c_str());
         this->produce_food();
         this->grade += 25;
     }
