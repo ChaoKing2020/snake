@@ -9,22 +9,26 @@
 class Game
 {
 public:
-    int w, h;
+    int width, height;
     Snake snake;
     Food food;
     int grade;
     bool is_running;
     int frame;
-    int sz;
+    int unit;
     int cnt;
-    IMAGE body, left, right, up, down, img_food;
+    IMAGE body, left, right, up, down, img_food, bg;
+    std::vector<std::string> food_urls;
+    std::string body_str, left_str, right_str, up_str, down_str, bg_str;
+    int food_idx;
 
     Game();
-    void init();
     void produce_food();
     void run();
     void controller();
     void draw();
-    void play_bg_music();
     void load_image();
 };
+
+void play_bg_music();
+void play_food_music();
