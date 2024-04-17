@@ -12,6 +12,9 @@ include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/include/
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 # 设置可执行文件的输出目录
 # set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+# 设置程序图标
+set(icon ${CMAKE_BINARY_DIR}/static/favicon.rc)
+message(${icon})
 # 生成可执行文件
-add_executable(app ${SRC})
+add_executable(app ${SRC} ${icon})
 target_link_libraries(app easyx ole32 gdi32 winmm)

@@ -16,7 +16,10 @@ void Game::controller()
                 if(dir == 'U' && key == VK_DOWN)  continue;
                 if(dir == 'R' && key == VK_LEFT)  continue;
                 if(dir == 'D' && key == VK_UP)    continue;
-                if(key != VK_SPACE && !this->is_running) continue;
+                if(!this->is_running) {
+                    if(key == VK_RIGHT || key == VK_DOWN|| key == VK_LEFT|| key == VK_UP)
+                        continue;
+                }
                 switch(key) {
                     case VK_UP:
                         this->snake.dir ='U';
