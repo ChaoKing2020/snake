@@ -28,7 +28,7 @@ Game::Game() {
     this->right_str = base + "right.png";
     this->up_str =   base + "up.png";
     this->down_str = base + "down.png";
-    // // 在地图上随机生成食物
+    // 在地图上随机生成食物
     this->produce_food();
     // 加载游戏图片
     this->load_image();
