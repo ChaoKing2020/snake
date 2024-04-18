@@ -8,13 +8,12 @@ void Game::draw()
         cleardevice();
         
         // 描绘背景
-        putimage(0, 0, &this->bg);
-
+        putimage(0, 0, &this->bg_img);
         // 描绘蛇身
         for(int i = 1; i < this->snake.sn.size(); i++) {
             int x = this->snake.sn[i].x * this->unit;
             int y = this->snake.sn[i].y * this->unit;
-            putimage(x, y, &this->body);
+            putimage(x, y, &this->bd_img);
         }
 
         // 描绘蛇头
@@ -23,16 +22,16 @@ void Game::draw()
         switch (this->snake.dir)
         {
         case 'U':
-            putimage(hd_x, hd_y, &this->up);
+            putimage(hd_x, hd_y, &this->up_img);
             break;
         case 'D':
-            putimage(hd_x, hd_y, &this->down);
+            putimage(hd_x, hd_y, &this->dw_img);
             break;
         case 'L':
-            putimage(hd_x, hd_y, &this->left);
+            putimage(hd_x, hd_y, &this->lf_img);
             break;
         case 'R':
-            putimage(hd_x, hd_y, &this->right);
+            putimage(hd_x, hd_y, &this->rt_img);
             break;
         default:
             break;
@@ -41,7 +40,7 @@ void Game::draw()
         // 描绘食物
         int fd_x = this->food.x * this->unit;
         int fd_y = this->food.y * this->unit;
-        putimage(fd_x, fd_y, &this->img_food);
+        putimage(fd_x, fd_y, &this->fd_img);
 
         setbkmode(TRANSPARENT);
         settextstyle(20, 0, _T("times new roman"));

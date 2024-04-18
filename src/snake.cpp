@@ -1,5 +1,8 @@
 #include <snake.h>
 #include <game.h>
+#include <util.h>
+
+extern void play_food_music();
 
 Snake::Snake() {
     this->speed = 1;
@@ -18,7 +21,7 @@ bool Snake::eat_food(Food& food) {
 }
 
 
-void Snake::move(int cnt) {
+void Snake::move() {
     for(int i = this->sn.size() - 1; i > 0; i--) {
         this->sn[i] = this->sn[i - 1];
     }
@@ -37,7 +40,7 @@ void Snake::move(int cnt) {
             hd->x += this->speed;
             break;
     }
-    cnt -= 1;
+    int cnt = w2 / unit2 - 1;
     if(hd->x < 0) hd->x = cnt;
     if(hd->x > cnt) hd->x = 0;
     if(hd->y < 0) hd->y = cnt;

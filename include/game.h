@@ -17,9 +17,10 @@ public:
     int frame;
     int unit;
     int cnt;
-    IMAGE body, left, right, up, down, img_food, bg;
+    int fd_idx;
+    IMAGE bd_img, lf_img, rt_img, up_img, dw_img, fd_img, bg_img;
     std::vector<std::string> food_urls;
-    std::string body_str, left_str, right_str, up_str, down_str, bg_str;
+    std::string bd_str, lf_str, rt_str, up_str, dw_str, bg_str;
 
     Game();
     void produce_food();
@@ -27,7 +28,8 @@ public:
     void controller();
     void draw();
     void load_image();
+    void update_fd();
 };
 
-void play_bg_music();
-void play_food_music();
+// void play_bg_music();
+// void play_food_music();
