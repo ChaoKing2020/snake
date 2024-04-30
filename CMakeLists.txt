@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
-project(chess)
+project(snake)
 
 # 赋值所有源程序文件名
 file(GLOB SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
@@ -15,6 +15,7 @@ link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 # 设置程序图标
 set(icon ${CMAKE_BINARY_DIR}/static/favicon.rc)
 message(${icon})
+set(app_name app)
 # 生成可执行文件
-add_executable(app ${SRC} ${icon})
-target_link_libraries(app easyx ole32 gdi32 winmm)
+add_executable(${app_name} ${SRC} ${icon})
+target_link_libraries(${app_name} easyx winmm)
