@@ -8,48 +8,48 @@ void Game::draw()
         cleardevice();
         
         // 描绘背景
-        putimage(0, 0, &this->bg_img);
+        putimage(0, 0, &bg_img);
         // 描绘蛇身
-        for(int i = 1; i < this->snake.sn.size(); i++) {
-            int x = this->snake.sn[i].x * this->unit;
-            int y = this->snake.sn[i].y * this->unit;
-            putimage(x, y, &this->bd_img);
+        for(int i = 0; i < snake.body.size(); i++) {
+            int x = snake.body[i].x * unit;
+            int y = snake.body[i].y * unit;
+            putimage(x, y, &bd_img);
         }
 
         // 描绘蛇头
-        int hd_x = this->snake.sn[0].x * this->unit;
-        int hd_y = this->snake.sn[0].y * this->unit;
-        switch (this->snake.dir)
+        int hd_x = snake.head.x * unit;
+        int hd_y = snake.head.y * unit;
+        switch (snake.dir)
         {
-        case 'U':
-            putimage(hd_x, hd_y, &this->up_img);
-            break;
-        case 'D':
-            putimage(hd_x, hd_y, &this->dw_img);
-            break;
-        case 'L':
-            putimage(hd_x, hd_y, &this->lf_img);
-            break;
-        case 'R':
-            putimage(hd_x, hd_y, &this->rt_img);
-            break;
-        default:
-            break;
+            case 'U':
+                putimage(hd_x, hd_y, &up_img);
+                break;
+            case 'D':
+                putimage(hd_x, hd_y, &dw_img);
+                break;
+            case 'L':
+                putimage(hd_x, hd_y, &lf_img);
+                break;
+            case 'R':
+                putimage(hd_x, hd_y, &rt_img);
+                break;
+            default:
+                break;
         }
 
         // 描绘食物
-        int fd_x = this->food.x * this->unit;
-        int fd_y = this->food.y * this->unit;
-        putimage(fd_x, fd_y, &this->fd_img);
+        int fd_x = food.x * unit;
+        int fd_y = food.y * unit;
+        putimage(fd_x, fd_y, &fd_img);
 
         setbkmode(TRANSPARENT);
-        settextstyle(20, 0, _T("times new roman"));
+        settextstyle(20, 0, (LPCTSTR)"times new roman");
 
-        std::string s = "grade: " + std::to_string(this->grade);
-        outtextxy(this->width - 80, 0, (LPTSTR)s.c_str());
+        std::string s = "grade: " + std::to_string(grade);
+        outtextxy(width - 80, 0, (LPTSTR)s.c_str());
 
-        std::string s2 = "speed: " + std::to_string(this->frame);
-        outtextxy(this->width - 80 , 20, (LPTSTR)s2.c_str());
+        std::string s2 = "speed: " + std::to_string(frame);
+        outtextxy(width - 80 , 20, (LPTSTR)s2.c_str());
 
         FlushBatchDraw();
         Sleep(10);
