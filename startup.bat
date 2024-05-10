@@ -10,7 +10,10 @@ IF "%1"=="dynamic" (
 )
 
 IF "%1"=="run" (
-	g++ -obuild/snake src/*.cpp -Iinclude -Iinclude/easyx -Llib -leasyx -lole32 -lgdi32 && cd build && snake && cd ..
+	g++ -obuild/snake src/*.cpp -Iinclude -Iinclude/easyx -Llib -leasyx -lole32 -lgdi32
+    cd build
+    snake
+    cd ..
 )
 
 IF "%1"=="static" (
